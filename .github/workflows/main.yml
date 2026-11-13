@@ -2,12 +2,12 @@ name: Calculator CI
 
 on:
   push:
-    branches: [main, development]
+    branches: [main, development, release]
   pull_request:
     branches: [main]
 
 jobs:
-  test:
+  test-and-document:
     runs-on: ubuntu-latest
     steps:
       - name: Получение кода
@@ -18,3 +18,10 @@ jobs:
           python-version: "3.12"
       - name: Запуск автоматических тестов
         run: python -m unittest discover -s tests -v
+      - name: Генерация HTML-документации
+        run: python generate_docs.py
+      - name: Сохранение документации
+        uses: actions/upload-artifact@v4
+        with:
+          name: calculator-documentation
+          path: docs/calculator.html

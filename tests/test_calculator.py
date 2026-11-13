@@ -16,7 +16,7 @@ class CalculatorTests(unittest.TestCase):
         self.assertEqual(multiply(6, 7), 42)
 
     def test_power(self) -> None:
-        self.assertEqual(power(2, 3), 9)
+        self.assertEqual(power(2, 3), 8)
 
     def test_divide(self) -> None:
         self.assertEqual(divide(8, 2), 4)
